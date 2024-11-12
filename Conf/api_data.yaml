@@ -1,0 +1,62 @@
+#0--从authorize接口中得到accessToken，openId，refreshToken
+- service: authorize
+  version:
+  username: foscam_jarvis@163.com
+  password: 123456.
+  grantType: password
+  clientId: foscloud
+  clientSecret: 180886A8A45AA905E3182A99D24A874B
+  consideringTheReusability: true
+  accessType: 2
+  oemCode:
+
+#1--从authorize接口中得到accessToken2，openId2
+- service: authorize
+  version:
+  username: foscam_jarvis001@163.com
+  password: 123456.
+  grantType: password
+  clientId: foscloud
+  clientSecret: 180886A8A45AA905E3182A99D24A874B
+  consideringTheReusability: true
+  accessType: 2
+  oemCode:
+
+#2--从user_ipc_setting_v2_0.getByMac接口中得到ipc id
+- service: user_ipc_setting_v2_0.getByMac
+  version:
+  clientId: foscloud
+  ipcMac: 06626E63FBA5
+
+#3--从fcmall.queryOrderDetail接口中得到tradeOrderNo
+- service: fcmall.queryOrderDetail
+  version:
+  clientId: foscloud
+  ipcMac: 06626E63FBA5
+
+#4--从user_bpi.list_all接口中得到bpi的id
+- service: user_bpi.list_all
+  version:
+  clientId: foscloud
+  ekv:
+
+#5--从center.getServerInfo接口中得到Tag,UserTag
+- service: center.getServerInfo
+  version:
+  clientId: foscloud
+  oemCode:
+
+#6--从user_nvr.list接口中得到NVR的id
+- service: user_nvr.list
+  clientId: foscloud
+
+ #7--从coupon.getByCouponCode接口中得到couponId
+- service: coupon.getByCouponCode
+  couponCode: ZXC226
+  clientId: foscloud
+
+ #8--从ddns-info.getDdnsByType接口中得到ddns的id
+- service: ddns-info.getDdnsByType
+  type: 0
+  macAddr: 06626E63FBA5
+  clientId: foscloud
