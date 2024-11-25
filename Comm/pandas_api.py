@@ -7,7 +7,7 @@ class TestAPI(unittest.TestCase):
 
     def setUp(self):
         # 加载测试数据
-        self.data = pd.read_excel('test_data.xlsx')
+        self.data = pd.read_excel('test_data.xlsx', keep_default_na=False)
 
     def test_api(self):
         # 遍历数据，对每一行数据进行测试

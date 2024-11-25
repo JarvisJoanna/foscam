@@ -69,7 +69,7 @@ def suite_run(unittest_suite):
 if __name__ == "__main__":
     # 加载测试用例
     suite = get_suite()
-    # print(suite)
+    print(suite)
     # 执行用例，生成测试报告，并返回报告附件路径、邮件正文内容
     report_file, report_summary = suite_run(suite)
     print(report_summary)

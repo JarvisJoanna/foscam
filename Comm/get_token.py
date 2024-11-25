@@ -120,7 +120,7 @@ def center_getServerInfo_tag_parameter(openid, accesstoken):
         return 0
 
 
-# 从center.getServerInfo接口中得到userTag
+# 从center.getServerInfo接口中得到storeTag
 def center_getServerInfo_parameter(openid, accesstoken):
     try:
         url = dns_environment(2)
@@ -182,6 +182,20 @@ def ddns_info_getDdnsByType_parameter(openid, accesstoken):
         return str(jsonContent['data']['id'])
     except Exception as e:
         msg = 'portal   查询DDNS信息   ddns-info.getDdnsByType  作为参数接口连接失败' + "    " + str(e)
+        logger.war(msg)
+        return 0
+
+
+# 9--从queryDevicesLatest接口中得到最后一个离线消息id
+def message_queryDevicesLatest_parameter(tag):
+    try:
+        url = dns_environment(0) + r'/push-msg/queryDevicesLatest?tag={}'.format(tag)
+        r = requests.get(url, verify=False)
+        jsonContent = json.loads(r.text)
+        return str(jsonContent['data']['msgList'][0]['msgId'])
+    except Exception as e:
+        msg = 'queryDevicesLatest   查询离线消息id信息   /push-msg/queryDevicesLatest  作为参数接口连接失败' + "    " + str(
+            e)
         logger.war(msg)
         return 0
 

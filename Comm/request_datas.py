@@ -1,6 +1,12 @@
 import json
 import requests
 from Comm.get_token import get_userinfo
+from Comm.get_token import user_ipc_setting_v2_0_getByMac_parameter as getipcid
+from Comm.get_token import fcmall_queryOrderDetail_parameter as getordeid
+from Comm.get_token import user_nvr_list_parameter as getnvrid
+from Comm.get_token import user_bpi_list_all_parameter as getbpiid
+from Comm.get_token import ddns_info_getDdnsByType_parameter as getddnsid
+from Comm.get_token import message_queryDevicesLatest_parameter as getmsgid
 from Conf.Config import env_cfg, test_sys_cfg, sys_cfg
 import urllib3
 
@@ -36,6 +42,20 @@ def request_data(URL, datas, user_info=None):
             data['refreshToken'] = userinfo['refreshToken']
         if 'userTag' in str(datas['往字典插入键值']):
             data['userTag'] = userinfo['tag']
+        if 'Tag' in str(datas['往字典插入键值']):
+            data['tag'] = userinfo['tag']
+        if 'ipcid' in str(datas['往字典插入键值']):
+            data['id'] = getipcid(userinfo['openId'], userinfo['accessToken'])
+        if 'bpiid' in str(datas['往字典插入键值']):
+            data['id'] = getbpiid(userinfo['openId'], userinfo['accessToken'])
+        if 'nvrid' in str(datas['往字典插入键值']):
+            data['id'] = getnvrid(userinfo['openId'], userinfo['accessToken'])
+        if 'tradeOrderNo' in str(datas['往字典插入键值']):
+            data['tradeOrderNo'] = getordeid(userinfo['openId'], userinfo['accessToken'])
+        if 'ddnsid' in str(datas['往字典插入键值']):
+            data['id'] = getddnsid(userinfo['openId'], userinfo['accessToken'])
+        if 'msgId' in str(datas['往字典插入键值']):
+            data['msgId'] = getmsgid(userinfo['tag'])
     return URL, data
 
 
@@ -71,4 +91,5 @@ def env_url(env):
 
 
 if __name__ == '__main__':
-    xiaobei_request_data
+    # xiaobei_request_data
+    print(env_url(0))
