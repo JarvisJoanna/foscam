@@ -6,6 +6,7 @@ from Comm.Email import Email
 from BeautifulReport import BeautifulReport
 from Comm.error_log import Logger
 from Comm.request_datas import env_url
+from Comm.screenshot import screen
 
 # 定义各目录
 ProjectHome = os.path.split(os.path.realpath(__file__))[0]
@@ -75,5 +76,6 @@ if __name__ == "__main__":
     print(report_summary)
     # 发送测试报告到邮箱
     send_email(report_file, report_summary)
+    screen('main')
     # print(os.getcwd())  # 获取当前工作目录路径
     # print(os.path.abspath('.'))  # 获取当前工作目录路径

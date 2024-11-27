@@ -14,7 +14,7 @@ def read_excel(file, **kwargs):
 
 
 if __name__ == '__main__':
-    data = read_excel(r'D:\pythonProject\Testcase\Testdata\Foscam_API_TEST_Case.xls')
-    print(data)
-    for i in data:
+    datas = read_excel(r'D:\pythonProject\Testcase\Testdata\Foscam_API_TEST_Case.xls')
+    print(datas)
+    for i in datas:
         print(i)
